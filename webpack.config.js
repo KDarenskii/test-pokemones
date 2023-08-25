@@ -26,14 +26,14 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: `static/css/${getFilename("css")}`,
         }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, "src/favicon.ico"),
-                    to: path.resolve(__dirname, "build"),
-                },
-            ],
-        }),
+        // new CopyPlugin({
+        //     patterns: [
+        //         {
+        //             from: path.resolve(__dirname, "src/favicon.ico"),
+        //             to: path.resolve(__dirname, "build"),
+        //         },
+        //     ],
+        // }),
     ],
     module: {
         rules: initRules(),
