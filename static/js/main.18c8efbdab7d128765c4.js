@@ -14640,7 +14640,10 @@ var Pokemones = function Pokemones() {
   return /*#__PURE__*/react.createElement(Grid_Grid, {
     container: true,
     columnSpacing: "12px",
-    rowSpacing: "24px",
+    rowSpacing: {
+      lg: "0",
+      xs: "24px"
+    },
     minHeight: "508px",
     direction: {
       lg: "row",
