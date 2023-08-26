@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 
 const isProd = process.env.NODE_ENV === "production";
 const isDev = !isProd;
@@ -21,19 +20,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "src", "index.html"),
             filename: "index.html",
-            publicPath: "/",
+            publicPath: isDev ? "/" : "/test-pokemones",
         }),
         new MiniCssExtractPlugin({
             filename: `static/css/${getFilename("css")}`,
         }),
-        // new CopyPlugin({
-        //     patterns: [
-        //         {
-        //             from: path.resolve(__dirname, "src/favicon.ico"),
-        //             to: path.resolve(__dirname, "build"),
-        //         },
-        //     ],
-        // }),
     ],
     module: {
         rules: initRules(),
