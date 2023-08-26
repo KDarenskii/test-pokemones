@@ -12,7 +12,7 @@ const Pokemones: FC = () => {
         <Grid
             container
             columnSpacing="12px"
-            rowSpacing="24px"
+            rowSpacing={{ lg: "0", xs: "24px" }}
             minHeight="508px"
             direction={{ lg: "row", xs: "column" }}
         >
