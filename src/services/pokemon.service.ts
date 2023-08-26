@@ -1,4 +1,4 @@
-import { AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 
 import pokemonApi from "api/pokemonApi";
 
@@ -9,13 +9,22 @@ interface GetResponse {
 }
 
 class PokemonService {
-    get = async (limit: number = 10): Promise<AxiosResponse<GetResponse>> => {
-        return pokemonApi.get<GetResponse>("/", { params: { limit } });
+    static getNames = async (
+        limit: number = 10,
+        config?: AxiosRequestConfig,
+    ): Promise<AxiosResponse<GetResponse>> => {
+        return pokemonApi.get<GetResponse>("/", {
+            params: { limit },
+            ...config,
+        });
     };
 
-    getByName = async (name: string): Promise<AxiosResponse<IPokemon>> => {
-        return pokemonApi.get<IPokemon>(`/${name}`);
+    static getByName = async (
+        name: string,
+        config?: AxiosRequestConfig,
+    ): Promise<AxiosResponse<IPokemon>> => {
+        return pokemonApi.get<IPokemon>(`/${name}`, config);
     };
 }
 
-export default new PokemonService();
+export default PokemonService;

@@ -1,8 +1,9 @@
 import React from "react";
 
 import { ThemeProvider } from "@mui/material";
-import theme from "libs/theme";
 import ReactDOM from "react-dom/client";
+
+import theme from "libs/theme";
 
 import "assets/styles/index.scss";
 

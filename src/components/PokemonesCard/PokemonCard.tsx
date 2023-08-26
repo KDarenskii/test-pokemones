@@ -8,7 +8,15 @@ import {
     Typography,
 } from "@mui/material";
 
-const PokemonCard: FC = () => {
+interface Props {
+    id: number;
+    name: string;
+    src: string;
+    height: number;
+    attack: number;
+}
+
+const PokemonCard: FC<Props> = ({ id, name, src, height, attack }) => {
     return (
         <Card
             sx={{
@@ -19,24 +27,29 @@ const PokemonCard: FC = () => {
         >
             <CardHeader
                 sx={{ padding: "44px" }}
-                title="Bulbasaur"
+                title={name}
                 titleTypographyProps={{
                     variant: "h3",
                     fontWeight: 700,
+                    fontSize: { lg: "3rem", xs: "2.5rem" },
                 }}
             />
             <CardMedia
                 component="img"
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg"
+                src={src}
                 width={96}
                 height={200}
-                sx={{ objectFit: "fill" }}
+                sx={{
+                    height: "auto",
+                    maxHeight: { md: "200px", xs: "150px" },
+                    objectFit: "fill",
+                }}
             />
             <CardContent sx={{ padding: "44px 44px 16px" }}>
                 <Typography component="p">Снялся в 78 сериях</Typography>
-                <Typography component="p">Id: 1</Typography>
-                <Typography component="p">height: 7</Typography>
-                <Typography component="p">attack: 49</Typography>
+                <Typography component="p">Id: {id}</Typography>
+                <Typography component="p">height: {height}</Typography>
+                <Typography component="p">attack: {attack}</Typography>
             </CardContent>
         </Card>
     );
